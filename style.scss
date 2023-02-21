@@ -1,0 +1,57 @@
+@import "./abstracts/mixins";
+@import "./base/reset";
+@import "./base/colors";
+
+body {
+  background: url(./img/blur-clean.jpg) no-repeat center;
+  background-size: cover;
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  div {
+    display: flex;
+    width: 14em;
+    height: 14em;
+    margin: 0.5em;
+    justify-content: center;
+    align-items: center;
+    transform: translate(0, -70vh);
+    animation: drop 1.5s forwards;
+
+    p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 3.125em;
+      font-weight: 700;
+      text-align: center;
+      color: white;
+    }
+
+    &:nth-child(1) {
+      background-color: $colorGray;
+    }
+
+    &:nth-child(2) {
+      background-color: $colorRed;
+    }
+    &:nth-child(3) {
+      background-color: $colorYellow;
+    }
+  }
+}
+
+@for $i from 1 through 3 {
+  div:nth-child(#{$i}) {
+    animation-delay: $i * 1.5s;
+  }
+}
+
+@keyframes drop {
+  100% {
+    transform: translate(0, 0);
+  }
+}
